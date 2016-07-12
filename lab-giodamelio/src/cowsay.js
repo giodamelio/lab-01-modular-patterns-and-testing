@@ -14,5 +14,3 @@ module.exports = function(input) {
 
   return topOfBubble + transformedInput + bottomOfBubble + body;
 };
-
-console.log(module.exports('Hello World!'));
