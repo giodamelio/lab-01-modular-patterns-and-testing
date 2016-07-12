@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "author": "Gio d'Amelio",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
 }
