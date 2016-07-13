@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
+const mocha = require('gulp-mocha');
 
 const SRC_FILES = 'src/**/*.js';
 const TEST_FILES = 'test/**/*.js';
@@ -18,4 +19,11 @@ gulp.task('lint:test', function() {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('default', ['lint:src', 'lint:test']);
+gulp.task('test', function() {
+  return gulp.src(TEST_FILES, { read: false })
+    .pipe(mocha({
+      reporter: 'spec',
+    }));
+});
+
+gulp.task('default', ['lint:src', 'lint:test', 'test']);
