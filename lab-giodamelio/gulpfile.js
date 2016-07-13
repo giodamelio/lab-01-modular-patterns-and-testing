@@ -8,19 +8,49 @@ const TEST_FILES = 'test/**/*.js';
 // Linter tasks -------------------------------------------
 gulp.task('lint:src', function() {
   return gulp.src(SRC_FILES)
-    .pipe(eslint())
+    .pipe(eslint({
+      rules: {
+        'no-console': 0,
+        indent: [2, 2],
+        quotes: [2, 'single'],
+        'linebreak-style': [2, 'unix'],
+        semi: [2, 'always']
+      },
+      envs: ['node', 'es6'],
+      parserOptions: {
+        ecmaVersion: 6,
+        ecmaFeatures: {
+          impliedStrict: true,
+        }
+      },
+    }))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
 gulp.task('lint:test', function() {
   return gulp.src(TEST_FILES)
-    .pipe(eslint())
+    .pipe(eslint({
+      rules: {
+        'no-console': 0,
+        indent: [2, 2],
+        quotes: [2, 'single'],
+        'linebreak-style': [2, 'unix'],
+        semi: [2, 'always']
+      },
+      envs: ['node', 'es6'],
+      parserOptions: {
+        ecmaVersion: 6,
+        ecmaFeatures: {
+          impliedStrict: true,
+        }
+      },
+    }))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('lint:watch', function() {
+gulp.task('lint:watch', ['lint:src', 'lint:test'], function() {
   gulp.watch(SRC_FILES, ['lint:src'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -40,7 +70,7 @@ gulp.task('test', function() {
     }));
 });
 
-gulp.task('test:watch', function() {
+gulp.task('test:watch', ['test'], function() {
   gulp.watch([SRC_FILES, TEST_FILES], ['test'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
