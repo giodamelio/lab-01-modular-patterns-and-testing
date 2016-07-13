@@ -14,7 +14,8 @@ gulp.task('lint:src', function() {
         indent: [2, 2],
         quotes: [2, 'single'],
         'linebreak-style': [2, 'unix'],
-        semi: [2, 'always']
+        semi: [2, 'always'],
+        'no-undef': 2,
       },
       envs: ['node', 'es6'],
       parserOptions: {
@@ -37,9 +38,10 @@ gulp.task('lint:test', function() {
         indent: [2, 2],
         quotes: [2, 'single'],
         'linebreak-style': [2, 'unix'],
-        semi: [2, 'always']
+        semi: [2, 'always'],
+        'no-undef': 2,
       },
-      envs: ['node', 'es6'],
+      envs: ['node', 'es6', 'mocha'],
       parserOptions: {
         ecmaVersion: 6,
         ecmaFeatures: {
