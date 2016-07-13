@@ -54,7 +54,7 @@ gulp.task('lint:test', function() {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('lint:watch', ['lint:src', 'lint:test'], function() {
+gulp.task('lint:watch', function() {
   gulp.watch(SRC_FILES, ['lint:src'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -74,7 +74,7 @@ gulp.task('test', function() {
     }));
 });
 
-gulp.task('test:watch', ['test'], function() {
+gulp.task('test:watch', function() {
   gulp.watch([SRC_FILES, TEST_FILES], ['test'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
