@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "author": "Gio d'Amelio",
   "scripts": {
-    "test": "mocha"
+    "test": "gulp"
   },
   "license": "MIT",
   "devDependencies": {
